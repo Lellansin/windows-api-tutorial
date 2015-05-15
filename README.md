@@ -19,4 +19,4 @@
     <li style="color:grey">Windows API 教程（十三） 进程线程同步</li>
 </ul>
 
-Windows API 相关源代码下载地址：<a href="http://pan.baidu.com/s/1nt4zaDN" target="_blank">百度网盘</a> （地址已修正，2015.1.7）
+PS: 本教程源代码原本放在百度网盘，但是由于网盘多次整改，近期在往 github 迁移。
