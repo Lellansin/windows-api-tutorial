@@ -6,13 +6,13 @@
 void help();
  
 struct _del_attr {
-    int Force_del;  // Ç¿ÖÆÉ¾³ıÑ¡Ïî
+    int Force_del;  // å¼ºåˆ¶åˆ é™¤é€‰é¡¹
 } ;
  
 struct _del_list {
-    const char *File_to_Del[FILE_DEL_MAX]; // ´ıÉ¾ÎÄ¼şÁĞ±í
-    int count;              // ´ıÉ¾ÎÄ¼şÊıÁ¿
-    struct _del_attr Attr;  // É¾³ıÑ¡Ïî
+    const char *File_to_Del[FILE_DEL_MAX]; // å¾…åˆ æ–‡ä»¶åˆ—è¡¨
+    int count;              // å¾…åˆ æ–‡ä»¶æ•°é‡
+    struct _del_attr Attr;  // åˆ é™¤é€‰é¡¹
 } Delete_list = {0};
  
 int main(int argc, const char *argv[])
@@ -25,47 +25,47 @@ int main(int argc, const char *argv[])
         help();
     }
  
-    // ±éÀú²ÎÊı
+    // éå†å‚æ•°
     for (i = 1; i < argc; i++)
     {
-        // »ñÈ¡²ÎÊıÑ¡Ïî
-        if( *argv[i] == '-') // Èç¹ûµ±Ç°Ö¸Ïò×Ö·û´®µÄµÚÒ»¸öÎª '-'
+        // è·å–å‚æ•°é€‰é¡¹
+        if( *argv[i] == '-') // å¦‚æœå½“å‰æŒ‡å‘å­—ç¬¦ä¸²çš„ç¬¬ä¸€ä¸ªä¸º '-'
         {
             if( strcmp( argv[i], "-f" ) == 0 )
             {
                 Delete_list.Attr.Force_del = 1;
             }
-        } else // ±£´æÎÄ¼şÂ·¾¶
+        } else // ä¿å­˜æ–‡ä»¶è·¯å¾„
         {           
             Delete_list.File_to_Del[Delete_list.count] = argv[i];
-            // printf("´ıÉ¾ÎÄ¼şÂ·¾¶ [%s] ÒÑ±£´æ\n", Delete_list.File_to_Del[Delete_list.count]);
+            // printf("å¾…åˆ æ–‡ä»¶è·¯å¾„ [%s] å·²ä¿å­˜\n", Delete_list.File_to_Del[Delete_list.count]);
             Delete_list.count++;
-            // printf("Ä¿Ç°´ıÉ¾ÎÄ¼şÊıÄ¿ %d\n", Delete_list.count);
+            // printf("ç›®å‰å¾…åˆ æ–‡ä»¶æ•°ç›® %d\n", Delete_list.count);
         }
     }
  
-    // ±éÀú´ıÉ¾ÎÄ¼şÁĞ±í
+    // éå†å¾…åˆ æ–‡ä»¶åˆ—è¡¨
     for (i = 0; i < Delete_list.count; i++)
     {
-        if( Delete_list.Attr.Force_del == 1 ) // ÊÇ·ñÇ¿ÖÆÉ¾³ı
+        if( Delete_list.Attr.Force_del == 1 ) // æ˜¯å¦å¼ºåˆ¶åˆ é™¤
         {           
-            if( !DeleteFile( Delete_list.File_to_Del[i] ) ) // Èç¹û·ÇÁãÔòÉ¾³ıÊ§°Ü
+            if( !DeleteFile( Delete_list.File_to_Del[i] ) ) // å¦‚æœéé›¶åˆ™åˆ é™¤å¤±è´¥
             {
-                printf("É¾³ıÎÄ¼ş´íÎó£º%x\n",GetLastError());
+                printf("åˆ é™¤æ–‡ä»¶é”™è¯¯ï¼š%x\n",GetLastError());
             }
         }else
-        {   // Ñ¯ÎÊÊÇ·ñÉ¾³ı
-            printf("ÊÇ·ñÒªÉ¾³ıÎÄ¼ş [%s] £¿(y/n)", Delete_list.File_to_Del[i] );
+        {   // è¯¢é—®æ˜¯å¦åˆ é™¤
+            printf("æ˜¯å¦è¦åˆ é™¤æ–‡ä»¶ [%s] ï¼Ÿ(y/n)", Delete_list.File_to_Del[i] );
             scanf("%c", &cmd);
-            getchar(); // »ØÊÕ»Ø³µ
+            getchar(); // å›æ”¶å›è½¦
             if ( cmd == 'y' )
             {
-                if( !DeleteFile( Delete_list.File_to_Del[i] ) ) // Èç¹û·ÇÁãÔòÉ¾³ıÊ§°Ü
+                if( !DeleteFile( Delete_list.File_to_Del[i] ) ) // å¦‚æœéé›¶åˆ™åˆ é™¤å¤±è´¥
                 {
-                    printf("É¾³ıÎÄ¼ş´íÎó£º%x\n",GetLastError());
+                    printf("åˆ é™¤æ–‡ä»¶é”™è¯¯ï¼š%x\n",GetLastError());
                 }else
                 {
-                    printf("ÎÄ¼ş [%s] ÒÑÉ¾³ı\n", Delete_list.File_to_Del[i]);
+                    printf("æ–‡ä»¶ [%s] å·²åˆ é™¤\n", Delete_list.File_to_Del[i]);
                 }
             }
         }
@@ -74,7 +74,7 @@ int main(int argc, const char *argv[])
  
 void help()
 {
-    printf("É¾³ıÎÄ¼ş£º\n");  
-    printf("rm <ÎÄ¼şÃû1> <ÎÄ¼şÃû2> ... [-Ñ¡Ïî]\n"); 
-    printf("Ñ¡Ïî£º -f Ç¿ÖÆÉ¾³ı");
+    printf("åˆ é™¤æ–‡ä»¶ï¼š\n");  
+    printf("rm <æ–‡ä»¶å1> <æ–‡ä»¶å2> ... [-é€‰é¡¹]\n"); 
+    printf("é€‰é¡¹ï¼š -f å¼ºåˆ¶åˆ é™¤");
 }

@@ -2,77 +2,77 @@
 
 void echo(LPSTR str)
 {
-	MessageBox(NULL, str, TEXT("ÌáÊ¾"), MB_OK);
+	MessageBox(NULL, str, TEXT("æç¤º"), MB_OK);
 }
 
-// 5. ´°¿Ú¹ı³Ì´¦Àí
+// 5. çª—å£è¿‡ç¨‹å¤„ç†
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {	
 	CHAR text[50];
 	switch(msg)
 	{
-	// ´°¿Ú´´½¨ÏûÏ¢
+	// çª—å£åˆ›å»ºæ¶ˆæ¯
 	case WM_CREATE:
 		RegisterHotKey(
-			hwnd,	// ×¢²á¿ì½İ¼üµÄ´°¿Ú¾ä±ú
-			1,		// ÈÈ¼ü±êÊ¶·û±ÜÃâÈÈ¼ü³åÍ»
-			MOD_CONTROL | MOD_NOREPEAT, // Ctrl ¼ü  No Repeat ²»ÖØ¸´·¢ËÍ
+			hwnd,	// æ³¨å†Œå¿«æ·é”®çš„çª—å£å¥æŸ„
+			1,		// çƒ­é”®æ ‡è¯†ç¬¦é¿å…çƒ­é”®å†²çª
+			MOD_CONTROL | MOD_NOREPEAT, // Ctrl é”®  No Repeat ä¸é‡å¤å‘é€
 			'A'		// A
 			); // Ctrl + A
 		RegisterHotKey(hwnd, 2, MOD_CONTROL | MOD_NOREPEAT,'B');// Ctrl + B
 		RegisterHotKey(hwnd, 3, MOD_ALT | MOD_NOREPEAT,'A');	// Alt + A
 		RegisterHotKey(hwnd, 4, MOD_ALT | MOD_NOREPEAT,'B');	// Alt + B
-		RegisterHotKey(hwnd, 5, MOD_NOREPEAT,'S');				// Ö±½Ó°´ S
+		RegisterHotKey(hwnd, 5, MOD_NOREPEAT,'S');				// ç›´æ¥æŒ‰ S
 	break;
 
-	// ¿ì½İ¼üÏûÏ¢
+	// å¿«æ·é”®æ¶ˆæ¯
 	case WM_HOTKEY:
 		/***
-		 * wParam ±£´æ×¢²áÊ±¶¨ÒåµÄÈÈ¼ü±êÊ¶·û
-		 * lParam ¸ßÎ»´æ¼ü(ÈçAµÄÖµ)£¬µÍÎ»´æ¸´ºÏ¼üµÄÖµ(ÈçCtrlµÄÖµ)
+		 * wParam ä¿å­˜æ³¨å†Œæ—¶å®šä¹‰çš„çƒ­é”®æ ‡è¯†ç¬¦
+		 * lParam é«˜ä½å­˜é”®(å¦‚Açš„å€¼)ï¼Œä½ä½å­˜å¤åˆé”®çš„å€¼(å¦‚Ctrlçš„å€¼)
 		 */
 		//wsprintf(text, "wParam : %p  lParam : %p", wParam, lParam);
 		//echo(text);
 
-		switch(LOWORD(lParam)) // »ñÈ¡µÍ16Î»µÄÖµ 
+		switch(LOWORD(lParam)) // è·å–ä½16ä½çš„å€¼ 
 		{
-		// µ±ÓÃ»§ÏÈ°´ ctrl
+		// å½“ç”¨æˆ·å…ˆæŒ‰ ctrl
 		case MOD_CONTROL:
 
-			switch(HIWORD(lParam)) // »ñÈ¡¸ß16Î»µÄÖµ
+			switch(HIWORD(lParam)) // è·å–é«˜16ä½çš„å€¼
 			{
 				case 'A':
-					echo("Ctrl + A ±»°´ÏÂ£¡");
+					echo("Ctrl + A è¢«æŒ‰ä¸‹ï¼");
 				break;
 				case 'B':
-					echo("Ctrl + B ±»°´ÏÂ£¡");
+					echo("Ctrl + B è¢«æŒ‰ä¸‹ï¼");
 				break;
 			}
 
 		break;
 
-		// µ±ÓÃ»§ÏÈ°´ Alt
+		// å½“ç”¨æˆ·å…ˆæŒ‰ Alt
 		case MOD_ALT:
 
-			switch(HIWORD(lParam)) // »ñÈ¡¸ß16Î»µÄÖµ
+			switch(HIWORD(lParam)) // è·å–é«˜16ä½çš„å€¼
 			{
 				case 'A':
-					echo("Alt + A ±»°´ÏÂ£¡");
+					echo("Alt + A è¢«æŒ‰ä¸‹ï¼");
 				break;
 				case 'B':
-					echo("Alt + B ±»°´ÏÂ£¡");
+					echo("Alt + B è¢«æŒ‰ä¸‹ï¼");
 				break;
 			}
 
 		break;
 
-		// Ã»ÓĞ×éºÏ¼ü
+		// æ²¡æœ‰ç»„åˆé”®
 		case 0: 
 
-			switch(HIWORD(lParam)) // »ñÈ¡¸ß16Î»µÄÖµ
+			switch(HIWORD(lParam)) // è·å–é«˜16ä½çš„å€¼
 			{
 				case 'S':
-					echo("S ±»°´ÏÂ");
+					echo("S è¢«æŒ‰ä¸‹");
 				break;
 			}
 
@@ -103,51 +103,51 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	const char szClassName[] = "myWindowClass";
 
-	// 1. ÉèÖÃ×¢²á´°¿Ú½á¹¹Ìå
-	wc.cbSize        = sizeof(WNDCLASSEX);				// ×¢²á´°¿Ú½á¹¹ÌåµÄ´óĞ¡
-	wc.style         = 0;								// ´°¿ÚµÄÑùÊ½
-	wc.lpfnWndProc   = WndProc;							// Ö¸Ïò´°¿Ú´¦Àí¹ı³ÌµÄº¯ÊıÖ¸Õë
-	wc.cbClsExtra    = 0;								// Ö¸¶¨½ô¸úÔÚ´°¿ÚÀà½á¹¹ºóµÄ¸½¼Ó×Ö½ÚÊı
-	wc.cbWndExtra    = 0;								// Ö¸¶¨½ô¸úÔÚ´°¿ÚÊÂÀıºóµÄ¸½¼Ó×Ö½ÚÊı
-	wc.hInstance     = hInstance;						// ±¾Ä£¿éµÄÊµÀı¾ä±ú
-	wc.hIcon         = LoadIcon(hInstance, IDI_APPLICATION);	// Í¼±êµÄ¾ä±ú
-	wc.hCursor       = LoadCursor(NULL, IDC_ARROW);		// ¹â±êµÄ¾ä±ú
-	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);		// ±³¾°»­Ë¢µÄ¾ä±ú
-	wc.lpszMenuName  = NULL;							// Ö¸Ïò²Ëµ¥µÄÖ¸Õë
-	wc.lpszClassName = szClassName;						// Ö¸ÏòÀàÃû³ÆµÄÖ¸Õë
-	wc.hIconSm       = LoadIcon(hInstance, IDI_APPLICATION);	// ºÍ´°¿ÚÀà¹ØÁªµÄĞ¡Í¼±ê
+	// 1. è®¾ç½®æ³¨å†Œçª—å£ç»“æ„ä½“
+	wc.cbSize        = sizeof(WNDCLASSEX);				// æ³¨å†Œçª—å£ç»“æ„ä½“çš„å¤§å°
+	wc.style         = 0;								// çª—å£çš„æ ·å¼
+	wc.lpfnWndProc   = WndProc;							// æŒ‡å‘çª—å£å¤„ç†è¿‡ç¨‹çš„å‡½æ•°æŒ‡é’ˆ
+	wc.cbClsExtra    = 0;								// æŒ‡å®šç´§è·Ÿåœ¨çª—å£ç±»ç»“æ„åçš„é™„åŠ å­—èŠ‚æ•°
+	wc.cbWndExtra    = 0;								// æŒ‡å®šç´§è·Ÿåœ¨çª—å£äº‹ä¾‹åçš„é™„åŠ å­—èŠ‚æ•°
+	wc.hInstance     = hInstance;						// æœ¬æ¨¡å—çš„å®ä¾‹å¥æŸ„
+	wc.hIcon         = LoadIcon(hInstance, IDI_APPLICATION);	// å›¾æ ‡çš„å¥æŸ„
+	wc.hCursor       = LoadCursor(NULL, IDC_ARROW);		// å…‰æ ‡çš„å¥æŸ„
+	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);		// èƒŒæ™¯ç”»åˆ·çš„å¥æŸ„
+	wc.lpszMenuName  = NULL;							// æŒ‡å‘èœå•çš„æŒ‡é’ˆ
+	wc.lpszClassName = szClassName;						// æŒ‡å‘ç±»åç§°çš„æŒ‡é’ˆ
+	wc.hIconSm       = LoadIcon(hInstance, IDI_APPLICATION);	// å’Œçª—å£ç±»å…³è”çš„å°å›¾æ ‡
 
-	// 2. Ê¹ÓÃ¡¾´°¿Ú½á¹¹Ìå¡¿×¢²á´°¿Ú
+	// 2. ä½¿ç”¨ã€çª—å£ç»“æ„ä½“ã€‘æ³¨å†Œçª—å£
 	if(!RegisterClassEx(&wc))
 	{
-		MessageBox(NULL, TEXT("´°¿Ú×¢²áÊ§°Ü£¡"), TEXT("´íÎó"), MB_ICONEXCLAMATION | MB_OK);
+		MessageBox(NULL, TEXT("çª—å£æ³¨å†Œå¤±è´¥ï¼"), TEXT("é”™è¯¯"), MB_ICONEXCLAMATION | MB_OK);
 		return 0;
 	}
 
-	// 3. ´´½¨´°¿Ú
+	// 3. åˆ›å»ºçª—å£
 	hwnd = CreateWindowEx(
-		WS_EX_CLIENTEDGE,		// ´°¿ÚµÄÀ©Õ¹·ç¸ñ
-		szClassName,			// Ö¸Ïò×¢²áÀàÃûµÄÖ¸Õë
-		TEXT("´°¿Ú±êÌâ"),		// Ö¸Ïò´°¿ÚÃû³ÆµÄÖ¸Õë
-		WS_OVERLAPPEDWINDOW,	// ´°¿Ú·ç¸ñ
-		CW_USEDEFAULT, CW_USEDEFAULT, 350, 200, // ´°¿ÚµÄ x,y ×ø±êÒÔ¼°¿í¸ß
-		NULL,					// ¸¸´°¿ÚµÄ¾ä±ú
-		NULL,					// ²Ëµ¥µÄ¾ä±ú
-		hInstance,				// Ó¦ÓÃ³ÌĞòÊµÀıµÄ¾ä±ú
-		NULL					// Ö¸Ïò´°¿ÚµÄ´´½¨Êı¾İ
+		WS_EX_CLIENTEDGE,		// çª—å£çš„æ‰©å±•é£æ ¼
+		szClassName,			// æŒ‡å‘æ³¨å†Œç±»åçš„æŒ‡é’ˆ
+		TEXT("çª—å£æ ‡é¢˜"),		// æŒ‡å‘çª—å£åç§°çš„æŒ‡é’ˆ
+		WS_OVERLAPPEDWINDOW,	// çª—å£é£æ ¼
+		CW_USEDEFAULT, CW_USEDEFAULT, 350, 200, // çª—å£çš„ x,y åæ ‡ä»¥åŠå®½é«˜
+		NULL,					// çˆ¶çª—å£çš„å¥æŸ„
+		NULL,					// èœå•çš„å¥æŸ„
+		hInstance,				// åº”ç”¨ç¨‹åºå®ä¾‹çš„å¥æŸ„
+		NULL					// æŒ‡å‘çª—å£çš„åˆ›å»ºæ•°æ®
 		);
 
 	if(hwnd == NULL)
 	{
-		MessageBox(NULL, TEXT("´°¿Ú´´½¨Ê§°Ü"), TEXT("´íÎó"),MB_ICONEXCLAMATION | MB_OK);
+		MessageBox(NULL, TEXT("çª—å£åˆ›å»ºå¤±è´¥"), TEXT("é”™è¯¯"),MB_ICONEXCLAMATION | MB_OK);
 		return 0;
 	}
 
-	// 4. ÏÔÊ¾´°¿Ú
+	// 4. æ˜¾ç¤ºçª—å£
 	ShowWindow(hwnd, nCmdShow);
 	UpdateWindow(hwnd);
 
-	// 6. ÏûÏ¢Ñ­»·
+	// 6. æ¶ˆæ¯å¾ªç¯
 	while(GetMessage(&Msg, NULL, 0, 0) > 0)
 	{
 		TranslateMessage(&Msg);

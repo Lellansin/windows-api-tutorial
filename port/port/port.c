@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	WORD wVersion = MAKEWORD(2, 0);
 	WSADATA wsaData;
 
-	//sockaddr_in½á¹¹Ìå
+	//sockaddr_inç»“æ„ä½“
 	struct sockaddr_in sin;
 
 	int iFromPort;
@@ -39,13 +39,13 @@ int main(int argc, char *argv[])
 
 	if (iFromPort > iToPort || iFromPort < 0 || iFromPort > 65535 || iToPort < 0 || iToPort > 65535)
 	{
-		printf("ÆğÊ¼¶Ë¿Ú²»ÄÜ´óÓÚ½áÊø¶Ë¿Ú,ÇÒ·¶Î§Îª£º1--65535 ");
+		printf("èµ·å§‹ç«¯å£ä¸èƒ½å¤§äºç»“æŸç«¯å£,ä¸”èŒƒå›´ä¸ºï¼š1--65535 ");
 		return 0;
 	}
 
 	if ( WSAStartup(wVersion , &wsaData) )
 	{
-		printf("³õÊ¼»¯Ê§°Ü£¡");
+		printf("åˆå§‹åŒ–å¤±è´¥ï¼");
 		return -1;
 	}
 
@@ -59,12 +59,12 @@ int main(int argc, char *argv[])
 			(host_entry->h_addr_list[0][2] & 0x00ff),
 			(host_entry->h_addr_list[0][3] & 0x00ff)
 			);
-		printf("\nÖ÷»úÃû³Æ£º%s  Ö÷»úµØÖ·£º%s \n", host_name, host_address);
+		printf("\nä¸»æœºåç§°ï¼š%s  ä¸»æœºåœ°å€ï¼š%s \n", host_name, host_address);
 	}
 
 	cHost = host_address;
 
-	printf("======= ¿ªÊ¼É¨Ãè ======= \n");
+	printf("======= å¼€å§‹æ‰«æ ======= \n");
 
 	for (iNowPort = iFromPort; iNowPort <= iToPort; iNowPort++)
 	{
@@ -81,33 +81,33 @@ int main(int argc, char *argv[])
 
 		if (connect(s, (struct sockaddr *)&sin, sizeof(sin)) == SOCKET_ERROR)
 		{
-			printf("%s -> %d:Î´¿ª·Å \n", cHost, iNowPort);
+			printf("%s -> %d:æœªå¼€æ”¾ \n", cHost, iNowPort);
 			closesocket(s);
 		}
 		else
 		{
-			printf("%s -> %d:¿ª·Å \n", cHost, iNowPort);
+			printf("%s -> %d:å¼€æ”¾ \n", cHost, iNowPort);
 			port[iOpenPort] = iNowPort;
 			iOpenPort ++;
 			closesocket(s);
 		}
 	}
 
-	printf("======= É¨Ãè½á¹û ======= \n");
-	printf("Ö÷»ú£º%s É¨Ãèµ½%d¸ö¶Ë¿Ú,·Ö±ğÊÇ£º \n", host_name, iOpenPort);
+	printf("======= æ‰«æç»“æœ ======= \n");
+	printf("ä¸»æœºï¼š%s æ‰«æåˆ°%dä¸ªç«¯å£,åˆ†åˆ«æ˜¯ï¼š \n", host_name, iOpenPort);
 
 	for ( i = 0; i < iOpenPort; i++)
 	{
 		printf("%d ", port[i]);
 	}
 
-	//¹Ø±Õsocket
+	//å…³é—­socket
 	closesocket(s);
 	WSACleanup();
 	return 0;
 }
 
-//°ïÖúº¯Êı
+//å¸®åŠ©å‡½æ•°
 void Help()
 {
 	printf("Usage: \n");

@@ -2,7 +2,7 @@
 #include <stdio.h> 
 #include <windows.h> 
 
-// Ö¸Ïòº¯ÊıµÄÖ¸ÕëÀàĞÍ
+// æŒ‡å‘å‡½æ•°çš„æŒ‡é’ˆç±»å‹
 typedef void (*fun_pointer)(void);
 
 // main
@@ -12,36 +12,36 @@ VOID main(VOID)
 	BOOL flagGetFun = FALSE; 
 	fun_pointer p;
 
-	// ¼ÓÔØ Dll
+	// åŠ è½½ Dll
 	hDLL = LoadLibrary(TEXT("DLLTEST.dll")); 
 
-	// ÅĞ¶ÏÊÇ·ñ¼ÓÔØ³É¹¦
+	// åˆ¤æ–­æ˜¯å¦åŠ è½½æˆåŠŸ
 	if (hDLL != NULL) 
 	{ 
-		printf("Ä£¿é¼ÓÔØ³É¹¦\n");
+		printf("æ¨¡å—åŠ è½½æˆåŠŸ\n");
 
-		// »ñµÃÖ¸¶¨µ¼³öº¯ÊıµÄµØÖ·
+		// è·å¾—æŒ‡å®šå¯¼å‡ºå‡½æ•°çš„åœ°å€
 		p = (fun_pointer) GetProcAddress(hDLL, "helloDLL"); 
 
-		// ÅĞ¶ÏÊÇ·ñ³É¹¦
+		// åˆ¤æ–­æ˜¯å¦æˆåŠŸ
 		if (NULL != p) 
 		{
-			printf("º¯Êı»ñÈ¡³É¹¦£¬×¼±¸µ÷ÓÃº¯Êı\n");
-			p(); // ³É¹¦Ôòµ÷ÓÃDLLÖĞµÄº¯Êı
+			printf("å‡½æ•°è·å–æˆåŠŸï¼Œå‡†å¤‡è°ƒç”¨å‡½æ•°\n");
+			p(); // æˆåŠŸåˆ™è°ƒç”¨DLLä¸­çš„å‡½æ•°
 		}else
 		{
-			printf("º¯Êı»ñÈ¡Ê§°Ü£¡\n");
+			printf("å‡½æ•°è·å–å¤±è´¥ï¼\n");
 			printf("error: %u\n", GetLastError()); 
 		}
-		// ÊÍ·ÅDLL 
+		// é‡Šæ”¾DLL 
 		if (!FreeLibrary(hDLL))
 		{
-			printf("DLLÊÍ·ÅÊ§°Ü\n");
+			printf("DLLé‡Šæ”¾å¤±è´¥\n");
 			printf("error: %u\n", GetLastError()); 
 		}		
 	}else
 	{
-		printf("Ä£¿é¼ÓÔØÊ§°Ü£¡\n");
+		printf("æ¨¡å—åŠ è½½å¤±è´¥ï¼\n");
 		printf("error: %u\n", GetLastError()); 
 	}		
 

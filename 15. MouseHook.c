@@ -5,7 +5,7 @@ HHOOK myhook;
 
 /**************************************************************** 
   WH_KEYBOARD hook procedure 
-  æI±P¹³×Ó´¦Àí¹ı³Ì
+  å«”æ¯™é’©å­å¤„ç†è¿‡ç¨‹
  ****************************************************************/ 
 LRESULT CALLBACK MouseProc(int nCode, WPARAM wParam, LPARAM lParam) 
 { 	
@@ -20,25 +20,25 @@ LRESULT CALLBACK MouseProc(int nCode, WPARAM wParam, LPARAM lParam)
 
     if (nCode >= 0)
 	{
-		if   (wParam == WM_MOUSEMOVE)		info = "Êó±êÒÆ¶¯¡¡¡¡¡¡¡¡";
-		else if(wParam == WM_LBUTTONDOWN)	info = "Êó±ê¡¾×ó¼ü¡¿°´ÏÂ";
-		else if(wParam == WM_LBUTTONUP)		info = "Êó±ê¡¾×ó¼ü¡¿Ì§Æğ";
-		else if(wParam == WM_LBUTTONDBLCLK)	info = "Êó±ê¡¾×ó¼ü¡¿Ë«»÷";
-		else if(wParam == WM_RBUTTONDOWN)	info = "Êó±ê¡¾ÓÒ¼ü¡¿°´ÏÂ";
-		else if(wParam == WM_RBUTTONUP)		info = "Êó±ê¡¾ÓÒ¼ü¡¿Ì§Æğ";
-		else if(wParam == WM_RBUTTONDBLCLK)	info = "Êó±ê¡¾ÓÒ¼ü¡¿Ë«»÷";
-		else if(wParam == WM_MBUTTONDOWN)	info = "Êó±ê¡¾¹öÂÖ¡¿°´ÏÂ";
-		else if(wParam == WM_MBUTTONUP)		info = "Êó±ê¡¾¹öÂÖ¡¿Ì§Æğ";
-		else if(wParam == WM_MBUTTONDBLCLK)	info = "Êó±ê¡¾¹öÂÖ¡¿Ë«»÷";
-		else if(wParam == WM_MOUSEWHEEL)	info = "Êó±ê¡¾¹öÂÖ¡¿¹ö¶¯";
+		if   (wParam == WM_MOUSEMOVE)		info = "é¼ æ ‡ç§»åŠ¨ã€€ã€€ã€€ã€€";
+		else if(wParam == WM_LBUTTONDOWN)	info = "é¼ æ ‡ã€å·¦é”®ã€‘æŒ‰ä¸‹";
+		else if(wParam == WM_LBUTTONUP)		info = "é¼ æ ‡ã€å·¦é”®ã€‘æŠ¬èµ·";
+		else if(wParam == WM_LBUTTONDBLCLK)	info = "é¼ æ ‡ã€å·¦é”®ã€‘åŒå‡»";
+		else if(wParam == WM_RBUTTONDOWN)	info = "é¼ æ ‡ã€å³é”®ã€‘æŒ‰ä¸‹";
+		else if(wParam == WM_RBUTTONUP)		info = "é¼ æ ‡ã€å³é”®ã€‘æŠ¬èµ·";
+		else if(wParam == WM_RBUTTONDBLCLK)	info = "é¼ æ ‡ã€å³é”®ã€‘åŒå‡»";
+		else if(wParam == WM_MBUTTONDOWN)	info = "é¼ æ ‡ã€æ»šè½®ã€‘æŒ‰ä¸‹";
+		else if(wParam == WM_MBUTTONUP)		info = "é¼ æ ‡ã€æ»šè½®ã€‘æŠ¬èµ·";
+		else if(wParam == WM_MBUTTONDBLCLK)	info = "é¼ æ ‡ã€æ»šè½®ã€‘åŒå‡»";
+		else if(wParam == WM_MOUSEWHEEL)	info = "é¼ æ ‡ã€æ»šè½®ã€‘æ»šåŠ¨";
 
 		ZeroMemory(text, sizeof(text));
 		ZeroMemory(pData, sizeof(pData));
 		ZeroMemory(mData, sizeof(mData));
 
-		wsprintf( text, "µ±Ç°×´Ì¬£º %10s   ", info);
+		wsprintf( text, "å½“å‰çŠ¶æ€ï¼š %10s   ", info);
 		wsprintf(pData, "0x%x - X: [%04d], Y: [%04d]  ", wParam, pt.x, pt.y);
-		wsprintf(mData, "¸½´øÊı¾İ£º %16u   ", mouseData);
+		wsprintf(mData, "é™„å¸¦æ•°æ®ï¼š %16u   ", mouseData);
 
 		hdc = GetDC(hgWnd);			
 		TextOut(hdc, 10, 10,  text, strlen(text));
@@ -50,7 +50,7 @@ LRESULT CALLBACK MouseProc(int nCode, WPARAM wParam, LPARAM lParam)
     return CallNextHookEx(myhook, nCode, wParam, lParam);
 } 
 
-// 5. ´°¿Ú¹ı³Ì´¦Àí
+// 5. çª—å£è¿‡ç¨‹å¤„ç†
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {	
 	hgWnd = hwnd;
@@ -79,66 +79,66 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	const char szClassName[] = "myWindowClass";
 
-    // 1. ÉèÖÃ×¢²á´°¿Ú½á¹¹Ìå
-    wc.cbSize        = sizeof(WNDCLASSEX);				// ×¢²á´°¿Ú½á¹¹ÌåµÄ´óĞ¡
-    wc.style         = 0;								// ´°¿ÚµÄÑùÊ½
-    wc.lpfnWndProc   = WndProc;							// Ö¸Ïò´°¿Ú´¦Àí¹ı³ÌµÄº¯ÊıÖ¸Õë
-    wc.cbClsExtra    = 0;								// Ö¸¶¨½ô¸úÔÚ´°¿ÚÀà½á¹¹ºóµÄ¸½¼Ó×Ö½ÚÊı
-    wc.cbWndExtra    = 0;								// Ö¸¶¨½ô¸úÔÚ´°¿ÚÊÂÀıºóµÄ¸½¼Ó×Ö½ÚÊı
-    wc.hInstance     = hInstance;						// ±¾Ä£¿éµÄÊµÀı¾ä±ú
-    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);	// Í¼±êµÄ¾ä±ú
-    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);		// ¹â±êµÄ¾ä±ú
-    wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);		// ±³¾°»­Ë¢µÄ¾ä±ú
-    wc.lpszMenuName  = NULL;							// Ö¸Ïò²Ëµ¥µÄÖ¸Õë
-    wc.lpszClassName = szClassName;						// Ö¸ÏòÀàÃû³ÆµÄÖ¸Õë
-    wc.hIconSm       = LoadIcon(NULL, IDI_APPLICATION);	// ºÍ´°¿ÚÀà¹ØÁªµÄĞ¡Í¼±ê
+    // 1. è®¾ç½®æ³¨å†Œçª—å£ç»“æ„ä½“
+    wc.cbSize        = sizeof(WNDCLASSEX);				// æ³¨å†Œçª—å£ç»“æ„ä½“çš„å¤§å°
+    wc.style         = 0;								// çª—å£çš„æ ·å¼
+    wc.lpfnWndProc   = WndProc;							// æŒ‡å‘çª—å£å¤„ç†è¿‡ç¨‹çš„å‡½æ•°æŒ‡é’ˆ
+    wc.cbClsExtra    = 0;								// æŒ‡å®šç´§è·Ÿåœ¨çª—å£ç±»ç»“æ„åçš„é™„åŠ å­—èŠ‚æ•°
+    wc.cbWndExtra    = 0;								// æŒ‡å®šç´§è·Ÿåœ¨çª—å£äº‹ä¾‹åçš„é™„åŠ å­—èŠ‚æ•°
+    wc.hInstance     = hInstance;						// æœ¬æ¨¡å—çš„å®ä¾‹å¥æŸ„
+    wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);	// å›¾æ ‡çš„å¥æŸ„
+    wc.hCursor       = LoadCursor(NULL, IDC_ARROW);		// å…‰æ ‡çš„å¥æŸ„
+    wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);		// èƒŒæ™¯ç”»åˆ·çš„å¥æŸ„
+    wc.lpszMenuName  = NULL;							// æŒ‡å‘èœå•çš„æŒ‡é’ˆ
+    wc.lpszClassName = szClassName;						// æŒ‡å‘ç±»åç§°çš„æŒ‡é’ˆ
+    wc.hIconSm       = LoadIcon(NULL, IDI_APPLICATION);	// å’Œçª—å£ç±»å…³è”çš„å°å›¾æ ‡
 
-	// 2. Ê¹ÓÃ¡¾´°¿Ú½á¹¹Ìå¡¿×¢²á´°¿Ú
+	// 2. ä½¿ç”¨ã€çª—å£ç»“æ„ä½“ã€‘æ³¨å†Œçª—å£
     if(!RegisterClassEx(&wc))
     {
-        MessageBox(NULL, TEXT("´°¿Ú×¢²áÊ§°Ü£¡"), TEXT("´íÎó"), MB_ICONEXCLAMATION | MB_OK);
+        MessageBox(NULL, TEXT("çª—å£æ³¨å†Œå¤±è´¥ï¼"), TEXT("é”™è¯¯"), MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
 
-    // 3. ´´½¨´°¿Ú
+    // 3. åˆ›å»ºçª—å£
     hwnd = CreateWindowEx(
-		WS_EX_CLIENTEDGE,		// ´°¿ÚµÄÀ©Õ¹·ç¸ñ
-		szClassName,			// Ö¸Ïò×¢²áÀàÃûµÄÖ¸Õë
-		TEXT("´°¿Ú±êÌâ"),		// Ö¸Ïò´°¿ÚÃû³ÆµÄÖ¸Õë
-		WS_OVERLAPPEDWINDOW,	// ´°¿Ú·ç¸ñ
-        CW_USEDEFAULT, CW_USEDEFAULT, 350, 200, // ´°¿ÚµÄ x,y ×ø±êÒÔ¼°¿í¸ß
-        NULL,					// ¸¸´°¿ÚµÄ¾ä±ú
-		NULL,					// ²Ëµ¥µÄ¾ä±ú
-		hInstance,				// Ó¦ÓÃ³ÌĞòÊµÀıµÄ¾ä±ú
-		NULL					// Ö¸Ïò´°¿ÚµÄ´´½¨Êı¾İ
+		WS_EX_CLIENTEDGE,		// çª—å£çš„æ‰©å±•é£æ ¼
+		szClassName,			// æŒ‡å‘æ³¨å†Œç±»åçš„æŒ‡é’ˆ
+		TEXT("çª—å£æ ‡é¢˜"),			// æŒ‡å‘çª—å£åç§°çš„æŒ‡é’ˆ
+		WS_OVERLAPPEDWINDOW,	// çª—å£é£æ ¼
+        CW_USEDEFAULT, CW_USEDEFAULT, 350, 200, // çª—å£çš„ x,y åæ ‡ä»¥åŠå®½é«˜
+        NULL,					// çˆ¶çª—å£çš„å¥æŸ„
+		NULL,					// èœå•çš„å¥æŸ„
+		hInstance,				// åº”ç”¨ç¨‹åºå®ä¾‹çš„å¥æŸ„
+		NULL					// æŒ‡å‘çª—å£çš„åˆ›å»ºæ•°æ®
 		);
 
     if(hwnd == NULL)
     {
-        MessageBox(NULL, TEXT("´°¿Ú´´½¨Ê§°Ü"), TEXT("´íÎó"),MB_ICONEXCLAMATION | MB_OK);
+        MessageBox(NULL, TEXT("çª—å£åˆ›å»ºå¤±è´¥"), TEXT("é”™è¯¯"),MB_ICONEXCLAMATION | MB_OK);
         return 0;
     }
 
-	// 4. ÏÔÊ¾´°¿Ú
+	// 4. æ˜¾ç¤ºçª—å£
     ShowWindow(hwnd, nCmdShow);
     UpdateWindow(hwnd);
 
-	// ÉèÖÃ¼üÅÌÈ«¾Ö¼àÌı
+	// è®¾ç½®é”®ç›˜å…¨å±€ç›‘å¬
 	myhook = SetWindowsHookEx( 
-		WH_MOUSE_LL,	// ¼àÌıÀàĞÍ¡¾Êó±ê¡¿
-		MouseProc,	// ´¦Àíº¯Êı
-		hInstance,		// µ±Ç°ÊµÀı¾ä±ú
-		0				// ¼àÌı´°¿Ú¾ä±ú(NULLÎªÈ«¾Ö¼àÌı)
+		WH_MOUSE_LL,	// ç›‘å¬ç±»å‹ã€é¼ æ ‡ã€‘
+		MouseProc,		// å¤„ç†å‡½æ•°
+		hInstance,		// å½“å‰å®ä¾‹å¥æŸ„
+		0				// ç›‘å¬çª—å£å¥æŸ„(NULLä¸ºå…¨å±€ç›‘å¬)
 	); 
 
 	if(myhook == NULL)
 	{		
-		wsprintf(text, "¼üÅÌ¼àÌıÊ§°Ü£¡error : %d \n", GetLastError());
-		MessageBox(hwnd, text, TEXT("´íÎó"), MB_OK);
+		wsprintf(text, "é”®ç›˜ç›‘å¬å¤±è´¥ï¼error : %d \n", GetLastError());
+		MessageBox(hwnd, text, TEXT("é”™è¯¯"), MB_OK);
 	}
 
 
-    // 5. ÏûÏ¢Ñ­»·
+    // 5. æ¶ˆæ¯å¾ªç¯
     while(GetMessage(&Msg, NULL, 0, 0) > 0)
     {
         TranslateMessage(&Msg);

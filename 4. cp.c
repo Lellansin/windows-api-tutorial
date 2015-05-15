@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
     char file_src[MAX_PATH]={0};
     char file_dest[MAX_PATH]={0};
  
-    // Ö»ÊäÈë³ÌĞòÃû ºÍÒ»¸ö²ÎÊıÔòµ÷ÓÃhelp
+    // åªè¾“å…¥ç¨‹åºå å’Œä¸€ä¸ªå‚æ•°åˆ™è°ƒç”¨help
     if (argc <= 2)
     {
         help();
@@ -21,43 +21,43 @@ int main(int argc, char const *argv[])
     memmove(file_dest, argv[2], strlen(argv[2]));
  
     if( isDirectory(file_dest) )
-    {   // Èç¹ûµÚ¶ş¸ö²ÎÊıÊÇÄ¿Â¼, ÔòÆ´×°ĞÂµÄÎÄ¼şÂ·¾¶
+    {   // å¦‚æœç¬¬äºŒä¸ªå‚æ•°æ˜¯ç›®å½•, åˆ™æ‹¼è£…æ–°çš„æ–‡ä»¶è·¯å¾„
         sprintf(file_dest, "%s\\%s", file_dest, file_src);
     }
  
     if( CopyFile(file_src, file_dest, 0) == 0)
-        printf("ÎÄ¼ş¸´ÖÆÊ§°Ü£¡");
+        printf("æ–‡ä»¶å¤åˆ¶å¤±è´¥ï¼");
      
     return 0;
 }
  
-// ÅĞ¶ÏÊÇ·ñÎªÄ¿Â¼
+// åˆ¤æ–­æ˜¯å¦ä¸ºç›®å½•
 BOOL isDirectory(char *path)
 {
     WIN32_FIND_DATA fd;
     BOOL rel = FALSE;
     char *p = path;
      
-    // ²éÕÒµ½µÚÒ»¸öÎÄ¼şµÄ¾ä±ú
+    // æŸ¥æ‰¾åˆ°ç¬¬ä¸€ä¸ªæ–‡ä»¶çš„å¥æŸ„
     HANDLE hFind = FindFirstFile(path, &fd);
  
     while(*p != '\0') p++;
  
-    // Èç¹û½áÎ²ÊÇÕâÁ½ÖÖ·ûºÅ¾Í¿Ï¶¨ÊÇÄ¿Â¼
+    // å¦‚æœç»“å°¾æ˜¯è¿™ä¸¤ç§ç¬¦å·å°±è‚¯å®šæ˜¯ç›®å½•
     if( *(--p) == '\\' || *(p) == '/' ) {
         *p = '\0';
         return TRUE;
     } 
  
-    // ÅĞ¶ÏÊÇ·ñ»ñÈ¡´íÎó
+    // åˆ¤æ–­æ˜¯å¦è·å–é”™è¯¯
     if(hFind != INVALID_HANDLE_VALUE)
     {
-        // ÎÄ¼şĞÅÏ¢°´Î»ÓëÉÏÄ¿Â¼ÊôĞÔ, ·ÇÄ¿Â¼ÔòÈ«²¿ÖÃÁã
+        // æ–‡ä»¶ä¿¡æ¯æŒ‰ä½ä¸ä¸Šç›®å½•å±æ€§, éç›®å½•åˆ™å…¨éƒ¨ç½®é›¶
         if( fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY )
         {
             rel = TRUE;  
         }
-        // ¹Ø±Õ²éÕÒ¾ä±ú
+        // å…³é—­æŸ¥æ‰¾å¥æŸ„
         FindClose(hFind);
     }
     return rel;  
@@ -65,8 +65,8 @@ BOOL isDirectory(char *path)
  
 void help()
 {
-    printf("¸´ÖÆÎÄ¼ş£º\n");
-    printf("cp <ÎÄ¼şÃû> <ĞÂÂ·¾¶>\n");
-    printf("cp <ÎÄ¼şÃû> <ĞÂÎÄ¼şÃû>\n");
-    printf("cp <ÎÄ¼şÃû> <ĞÂÂ·¾¶\\ĞÂÎÄ¼şÃû>");
+    printf("å¤åˆ¶æ–‡ä»¶ï¼š\n");
+    printf("cp <æ–‡ä»¶å> <æ–°è·¯å¾„>\n");
+    printf("cp <æ–‡ä»¶å> <æ–°æ–‡ä»¶å>\n");
+    printf("cp <æ–‡ä»¶å> <æ–°è·¯å¾„\\æ–°æ–‡ä»¶å>");
 }

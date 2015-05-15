@@ -6,24 +6,24 @@ int main(int argc, char const *argv[])
 {
     int i;
  
-    // ²ÎÊýÊýÄ¿Îª1 ¼´ÓÃ»§Ö»ÊäÈë³ÌÐòÃû£¬³ÌÐò½öÊÕµ½Ò»¸ö²ÎÊý
+    // å‚æ•°æ•°ç›®ä¸º1 å³ç”¨æˆ·åªè¾“å…¥ç¨‹åºåï¼Œç¨‹åºä»…æ”¶åˆ°ä¸€ä¸ªå‚æ•°
     if (argc == 1)
     {
         help();
         return 0;
     }
  
-    // ±éÀúÖ¸ÕëÊý×éËùÖ¸ÏòµÄ²ÎÊý
+    // éåŽ†æŒ‡é’ˆæ•°ç»„æ‰€æŒ‡å‘çš„å‚æ•°
     for (i = 1; i < argc; i++)
     {
         CreateFile(
-            argv[i],                // ÎÄ¼þÃû
-            GENERIC_WRITE,          // Ð´ÈëÈ¨ÏÞ
-            0,                      // ×èÖ¹ÆäËû½ø³Ì·ÃÎÊ
-            NULL,                   // ×Ó½ø³Ì²»¿É¼Ì³Ð±¾¾ä±ú
-            CREATE_NEW,             // ½ö²»´æÔÚÊ±´´½¨ÐÂÎÄ¼þ
-            FILE_ATTRIBUTE_NORMAL,  // ÆÕÍ¨ÎÄ¼þ
-            NULL);                  // ²»ÊÊÓÃÄ£°åÎÄ¼þ
+            argv[i],                // æ–‡ä»¶å
+            GENERIC_WRITE,          // å†™å…¥æƒé™
+            0,                      // é˜»æ­¢å…¶ä»–è¿›ç¨‹è®¿é—®
+            NULL,                   // å­è¿›ç¨‹ä¸å¯ç»§æ‰¿æœ¬å¥æŸ„
+            CREATE_NEW,             // ä»…ä¸å­˜åœ¨æ—¶åˆ›å»ºæ–°æ–‡ä»¶
+            FILE_ATTRIBUTE_NORMAL,  // æ™®é€šæ–‡ä»¶
+            NULL);                  // ä¸é€‚ç”¨æ¨¡æ¿æ–‡ä»¶
     }
      
      
@@ -32,6 +32,6 @@ int main(int argc, char const *argv[])
  
 void help()
 {
-    printf("´´½¨ÐÂÎÄ¼þ£º");
-    printf("touch <ÎÄ¼þÃû1> <ÎÄ¼þÃû2> ...");
+    printf("åˆ›å»ºæ–°æ–‡ä»¶ï¼š");
+    printf("touch <æ–‡ä»¶å1> <æ–‡ä»¶å2> ...");
 }
